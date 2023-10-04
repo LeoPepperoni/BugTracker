@@ -50,11 +50,45 @@ const createProject = async (req, res) => {
 }
 
 // TODO: Add a function to delete a project from the database
+const deleteProject = async (req, res) => {
+    const { id} = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such Project'})
+    }
+
+    const project = await Project.findOneAndDelete({_id: id})
+
+    if (!project){
+        return res.status(404).json({error: 'No such Project'})
+    }
+
+    res.status(200).json(project)
+}
 // TODO: Add a function to update a project in the database
+const updateProject = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such Project'})
+    }
+
+    const project = await Project.findOneAndUpdate({_id: id},{
+        ...req.body
+    })
+
+    if (!project){
+        return res.status(404).json({error: 'No such Project'})
+    }
+
+    res.status(200).json(project)
+}
 
 // Exporting the functions to be used in other modules
 module.exports = {
     createProject,
     getProjects,
-    getProject
+    getProject,
+    deleteProject,
+    updateProject
 }

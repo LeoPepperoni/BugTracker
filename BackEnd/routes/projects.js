@@ -4,7 +4,9 @@ const express = require('express')
 const {
     createProject, 
     getProjects,
-    getProject
+    getProject,
+    deleteProject,
+    updateProject
 } = require('../controllers/projectController')
 
 // Initializing a new router
@@ -20,14 +22,10 @@ router.get('/:id', getProject)
 router.post('/', createProject)
 
 // Route to DELETE a single project by its ID. Currently, this route responds with a JSON message.
-router.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE single project'})
-})
+router.delete('/:id', deleteProject)
 
 // Route to PATCH (update) a single project by its ID. Currently, this route responds with a JSON message.
-router.patch('/:id', (req, res) => {
-    res.json({mssg: 'UPDATE single project'})
-})
+router.patch('/:id', updateProject)
 
 // Exporting the router to be used in other modules
 module.exports = router
