@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  background-color: #1D2125;
+  width: 100vw;
+  height: 100vh;
+}
+
+.Bg-darknight {
+  background-color: #1D2125;
+}
+
+.navbar-brand{
+  color: white;
+  font-size: 2rem;
+}
+
+.navbar-brand:hover, .navbar-brand:focus{
+  color: white;
+}
+
+.nav-link{
+  color: white;
+  font-size: 1.5rem;
+}
+
+.nav-link:hover, .nav-link:focus, .navbar-nav .nav-link.active, .navbar-nav .nav-link.show{
+  color: #85B8FF;
+}
+
